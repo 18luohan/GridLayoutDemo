@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		442BF3F517896E1D003FAB93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BF3F417896E1D003FAB93 /* UIKit.framework */; };
+		442BF3F717896E1D003FAB93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BF3F617896E1D003FAB93 /* Foundation.framework */; };
+		442BF3F917896E1D003FAB93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BF3F817896E1D003FAB93 /* CoreGraphics.framework */; };
+		442BF3FF17896E1D003FAB93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 442BF3FD17896E1D003FAB93 /* InfoPlist.strings */; };
+		442BF40117896E1D003FAB93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BF40017896E1D003FAB93 /* main.m */; };
+		442BF40517896E1D003FAB93 /* RDHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BF40417896E1D003FAB93 /* RDHAppDelegate.m */; };
+		442BF41317896E5D003FAB93 /* RDHDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BF41217896E5D003FAB93 /* RDHDemoCell.m */; };
+		442BF41617896E84003FAB93 /* RDHDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BF41517896E84003FAB93 /* RDHDemoViewController.m */; };
+		4437B7D51954CB5A005CCBBC /* RDHCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4437B7D41954CB5A005CCBBC /* RDHCollectionViewGridLayout.m */; };
+		4437B7DC1954CC83005CCBBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4437B7DB1954CC83005CCBBC /* Images.xcassets */; };
+		4437B7FD1956DF0B005CCBBC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4437B7FC1956DF0B005CCBBC /* XCTest.framework */; };
+		4437B7FE1956DF0B005CCBBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BF3F617896E1D003FAB93 /* Foundation.framework */; };
+		4437B7FF1956DF0B005CCBBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BF3F417896E1D003FAB93 /* UIKit.framework */; };
+		4437B80F1956DF41005CCBBC /* RDHGridLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4437B80E1956DF41005CCBBC /* RDHGridLayoutTests.m */; };
+		444926661AB6C17A002DBB57 /* RDHStoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444926651AB6C17A002DBB57 /* RDHStoryboardTests.swift */; };
+		4449266A1AB6C24D002DBB57 /* TestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444926691AB6C24D002DBB57 /* TestDataSource.swift */; };
+		4449266C1AB6C94C002DBB57 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4449266B1AB6C94C002DBB57 /* TestStoryboard.storyboard */; };
+		AB76FF241B2869F000D3FF18 /* BSGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF231B2869F000D3FF18 /* BSGrid.m */; };
+		AB76FF271B286A0A00D3FF18 /* BSGridPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */; };
+		AB76FF2A1B286D0700D3FF18 /* BSGridBlockSize.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */; };
+		AB76FF2D1B286D6600D3FF18 /* BSGridMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */; };
+		AB76FF301B287B7D00D3FF18 /* BSGridRect.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF2F1B287B7D00D3FF18 /* BSGridRect.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4437B8091956DF0B005CCBBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 442BF3E917896E1D003FAB93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 442BF3F017896E1D003FAB93;
+			remoteInfo = RDHCollectionViewGridLayoutDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		442BF3F117896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDHCollectionViewGridLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		442BF3F417896E1D003FAB93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		442BF3F617896E1D003FAB93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		442BF3F817896E1D003FAB93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		442BF3FC17896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RDHCollectionViewGridLayoutDemo-Info.plist"; sourceTree = "<group>"; };
+		442BF3FE17896E1D003FAB93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		442BF40017896E1D003FAB93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		442BF40217896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RDHCollectionViewGridLayoutDemo-Prefix.pch"; sourceTree = "<group>"; };
+		442BF40317896E1D003FAB93 /* RDHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDHAppDelegate.h; sourceTree = "<group>"; };
+		442BF40417896E1D003FAB93 /* RDHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDHAppDelegate.m; sourceTree = "<group>"; };
+		442BF41117896E5D003FAB93 /* RDHDemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHDemoCell.h; sourceTree = "<group>"; };
+		442BF41217896E5D003FAB93 /* RDHDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHDemoCell.m; sourceTree = "<group>"; };
+		442BF41417896E84003FAB93 /* RDHDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHDemoViewController.h; sourceTree = "<group>"; };
+		442BF41517896E84003FAB93 /* RDHDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHDemoViewController.m; sourceTree = "<group>"; };
+		4437B7CF1954CB54005CCBBC /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4437B7D01954CB54005CCBBC /* RDHCollectionViewGridLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = RDHCollectionViewGridLayout.podspec; path = ../RDHCollectionViewGridLayout.podspec; sourceTree = "<group>"; };
+		4437B7D11954CB54005CCBBC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4437B7D31954CB5A005CCBBC /* RDHCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCollectionViewGridLayout.h; sourceTree = "<group>"; };
+		4437B7D41954CB5A005CCBBC /* RDHCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCollectionViewGridLayout.m; sourceTree = "<group>"; };
+		4437B7D71954CB6F005CCBBC /* 5-line, 10-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5-line, 10-item.png"; sourceTree = "<group>"; };
+		4437B7D81954CB6F005CCBBC /* horizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horizontal.png; sourceTree = "<group>"; };
+		4437B7D91954CB6F005CCBBC /* vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical.png; sourceTree = "<group>"; };
+		4437B7DA1954CB94005CCBBC /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		4437B7DB1954CC83005CCBBC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4437B7FB1956DF0B005CCBBC /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4437B7FC1956DF0B005CCBBC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4437B80E1956DF41005CCBBC /* RDHGridLayoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHGridLayoutTests.m; sourceTree = "<group>"; };
+		4437B8101956DF56005CCBBC /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		444926641AB6C179002DBB57 /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		444926651AB6C17A002DBB57 /* RDHStoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDHStoryboardTests.swift; sourceTree = "<group>"; };
+		444926691AB6C24D002DBB57 /* TestDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataSource.swift; sourceTree = "<group>"; };
+		4449266B1AB6C94C002DBB57 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
+		AB76FF221B2869F000D3FF18 /* BSGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGrid.h; sourceTree = "<group>"; };
+		AB76FF231B2869F000D3FF18 /* BSGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGrid.m; sourceTree = "<group>"; };
+		AB76FF251B286A0900D3FF18 /* BSGridPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridPosition.h; sourceTree = "<group>"; };
+		AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridPosition.m; sourceTree = "<group>"; };
+		AB76FF281B286D0700D3FF18 /* BSGridBlockSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridBlockSize.h; sourceTree = "<group>"; };
+		AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridBlockSize.m; sourceTree = "<group>"; };
+		AB76FF2B1B286D6600D3FF18 /* BSGridMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridMatrix.h; sourceTree = "<group>"; };
+		AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridMatrix.m; sourceTree = "<group>"; };
+		AB76FF2E1B287B7D00D3FF18 /* BSGridRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridRect.h; sourceTree = "<group>"; };
+		AB76FF2F1B287B7D00D3FF18 /* BSGridRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridRect.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		442BF3EE17896E1D003FAB93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442BF3F517896E1D003FAB93 /* UIKit.framework in Frameworks */,
+				442BF3F717896E1D003FAB93 /* Foundation.framework in Frameworks */,
+				442BF3F917896E1D003FAB93 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4437B7F81956DF0B005CCBBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4437B7FD1956DF0B005CCBBC /* XCTest.framework in Frameworks */,
+				4437B7FF1956DF0B005CCBBC /* UIKit.framework in Frameworks */,
+				4437B7FE1956DF0B005CCBBC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		442BF3E817896E1D003FAB93 = {
+			isa = PBXGroup;
+			children = (
+				4437B7DA1954CB94005CCBBC /* .travis.yml */,
+				4437B7CF1954CB54005CCBBC /* LICENSE */,
+				4437B7D01954CB54005CCBBC /* RDHCollectionViewGridLayout.podspec */,
+				4437B7D11954CB54005CCBBC /* README.md */,
+				4437B7D61954CB6F005CCBBC /* images */,
+				4437B7D21954CB5A005CCBBC /* RDHCollectionViewGridLayout */,
+				442BF3FA17896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo */,
+				4437B8001956DF0B005CCBBC /* Tests */,
+				442BF3F317896E1D003FAB93 /* Frameworks */,
+				442BF3F217896E1D003FAB93 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		442BF3F217896E1D003FAB93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				442BF3F117896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo.app */,
+				4437B7FB1956DF0B005CCBBC /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		442BF3F317896E1D003FAB93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				442BF3F417896E1D003FAB93 /* UIKit.framework */,
+				442BF3F617896E1D003FAB93 /* Foundation.framework */,
+				442BF3F817896E1D003FAB93 /* CoreGraphics.framework */,
+				4437B7FC1956DF0B005CCBBC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		442BF3FA17896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo */ = {
+			isa = PBXGroup;
+			children = (
+				442BF40317896E1D003FAB93 /* RDHAppDelegate.h */,
+				442BF40417896E1D003FAB93 /* RDHAppDelegate.m */,
+				442BF41417896E84003FAB93 /* RDHDemoViewController.h */,
+				442BF41517896E84003FAB93 /* RDHDemoViewController.m */,
+				442BF41117896E5D003FAB93 /* RDHDemoCell.h */,
+				442BF41217896E5D003FAB93 /* RDHDemoCell.m */,
+				442BF3FB17896E1D003FAB93 /* Supporting Files */,
+			);
+			path = RDHCollectionViewGridLayoutDemo;
+			sourceTree = "<group>";
+		};
+		442BF3FB17896E1D003FAB93 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				442BF3FC17896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo-Info.plist */,
+				442BF3FD17896E1D003FAB93 /* InfoPlist.strings */,
+				442BF40017896E1D003FAB93 /* main.m */,
+				442BF40217896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo-Prefix.pch */,
+				4437B7DB1954CC83005CCBBC /* Images.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4437B7D21954CB5A005CCBBC /* RDHCollectionViewGridLayout */ = {
+			isa = PBXGroup;
+			children = (
+				4437B7D31954CB5A005CCBBC /* RDHCollectionViewGridLayout.h */,
+				4437B7D41954CB5A005CCBBC /* RDHCollectionViewGridLayout.m */,
+				AB76FF221B2869F000D3FF18 /* BSGrid.h */,
+				AB76FF231B2869F000D3FF18 /* BSGrid.m */,
+				AB76FF251B286A0900D3FF18 /* BSGridPosition.h */,
+				AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */,
+				AB76FF281B286D0700D3FF18 /* BSGridBlockSize.h */,
+				AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */,
+				AB76FF2B1B286D6600D3FF18 /* BSGridMatrix.h */,
+				AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */,
+				AB76FF2E1B287B7D00D3FF18 /* BSGridRect.h */,
+				AB76FF2F1B287B7D00D3FF18 /* BSGridRect.m */,
+			);
+			name = RDHCollectionViewGridLayout;
+			path = ../RDHCollectionViewGridLayout;
+			sourceTree = "<group>";
+		};
+		4437B7D61954CB6F005CCBBC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4437B7D71954CB6F005CCBBC /* 5-line, 10-item.png */,
+				4437B7D81954CB6F005CCBBC /* horizontal.png */,
+				4437B7D91954CB6F005CCBBC /* vertical.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		4437B8001956DF0B005CCBBC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4449266B1AB6C94C002DBB57 /* TestStoryboard.storyboard */,
+				444926691AB6C24D002DBB57 /* TestDataSource.swift */,
+				4437B8011956DF0B005CCBBC /* Supporting Files */,
+				4437B80E1956DF41005CCBBC /* RDHGridLayoutTests.m */,
+				444926651AB6C17A002DBB57 /* RDHStoryboardTests.swift */,
+				444926641AB6C179002DBB57 /* Tests-Bridging-Header.h */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4437B8011956DF0B005CCBBC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4437B8101956DF56005CCBBC /* Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		442BF3F017896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 442BF40E17896E1D003FAB93 /* Build configuration list for PBXNativeTarget "RDHCollectionViewGridLayoutDemo" */;
+			buildPhases = (
+				442BF3ED17896E1D003FAB93 /* Sources */,
+				442BF3EE17896E1D003FAB93 /* Frameworks */,
+				442BF3EF17896E1D003FAB93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RDHCollectionViewGridLayoutDemo;
+			productName = RDHCollectionViewGridLayoutDemo;
+			productReference = 442BF3F117896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4437B7FA1956DF0B005CCBBC /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4437B80D1956DF0B005CCBBC /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				4437B7F71956DF0B005CCBBC /* Sources */,
+				4437B7F81956DF0B005CCBBC /* Frameworks */,
+				4437B7F91956DF0B005CCBBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4437B80A1956DF0B005CCBBC /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 4437B7FB1956DF0B005CCBBC /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		442BF3E917896E1D003FAB93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RDH;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Rich H";
+				TargetAttributes = {
+					4437B7FA1956DF0B005CCBBC = {
+						TestTargetID = 442BF3F017896E1D003FAB93;
+					};
+				};
+			};
+			buildConfigurationList = 442BF3EC17896E1D003FAB93 /* Build configuration list for PBXProject "RDHCollectionViewGridLayoutDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 442BF3E817896E1D003FAB93;
+			productRefGroup = 442BF3F217896E1D003FAB93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				442BF3F017896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo */,
+				4437B7FA1956DF0B005CCBBC /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		442BF3EF17896E1D003FAB93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				442BF3FF17896E1D003FAB93 /* InfoPlist.strings in Resources */,
+				4437B7DC1954CC83005CCBBC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4437B7F91956DF0B005CCBBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4449266C1AB6C94C002DBB57 /* TestStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		442BF3ED17896E1D003FAB93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB76FF2A1B286D0700D3FF18 /* BSGridBlockSize.m in Sources */,
+				AB76FF271B286A0A00D3FF18 /* BSGridPosition.m in Sources */,
+				AB76FF2D1B286D6600D3FF18 /* BSGridMatrix.m in Sources */,
+				442BF40117896E1D003FAB93 /* main.m in Sources */,
+				4437B7D51954CB5A005CCBBC /* RDHCollectionViewGridLayout.m in Sources */,
+				442BF40517896E1D003FAB93 /* RDHAppDelegate.m in Sources */,
+				AB76FF301B287B7D00D3FF18 /* BSGridRect.m in Sources */,
+				442BF41617896E84003FAB93 /* RDHDemoViewController.m in Sources */,
+				AB76FF241B2869F000D3FF18 /* BSGrid.m in Sources */,
+				442BF41317896E5D003FAB93 /* RDHDemoCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4437B7F71956DF0B005CCBBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4437B80F1956DF41005CCBBC /* RDHGridLayoutTests.m in Sources */,
+				444926661AB6C17A002DBB57 /* RDHStoryboardTests.swift in Sources */,
+				4449266A1AB6C24D002DBB57 /* TestDataSource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4437B80A1956DF0B005CCBBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 442BF3F017896E1D003FAB93 /* RDHCollectionViewGridLayoutDemo */;
+			targetProxy = 4437B8091956DF0B005CCBBC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		442BF3FD17896E1D003FAB93 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				442BF3FE17896E1D003FAB93 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		442BF40C17896E1D003FAB93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		442BF40D17896E1D003FAB93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		442BF40F17896E1D003FAB93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RDHCollectionViewGridLayoutDemo/RDHCollectionViewGridLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "RDHCollectionViewGridLayoutDemo/RDHCollectionViewGridLayoutDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		442BF41017896E1D003FAB93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RDHCollectionViewGridLayoutDemo/RDHCollectionViewGridLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "RDHCollectionViewGridLayoutDemo/RDHCollectionViewGridLayoutDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4437B80B1956DF0B005CCBBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RDHCollectionViewGridLayoutDemo.app/RDHCollectionViewGridLayoutDemo";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4437B80C1956DF0B005CCBBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RDHCollectionViewGridLayoutDemo.app/RDHCollectionViewGridLayoutDemo";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		442BF3EC17896E1D003FAB93 /* Build configuration list for PBXProject "RDHCollectionViewGridLayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				442BF40C17896E1D003FAB93 /* Debug */,
+				442BF40D17896E1D003FAB93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		442BF40E17896E1D003FAB93 /* Build configuration list for PBXNativeTarget "RDHCollectionViewGridLayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				442BF40F17896E1D003FAB93 /* Debug */,
+				442BF41017896E1D003FAB93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4437B80D1956DF0B005CCBBC /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4437B80B1956DF0B005CCBBC /* Debug */,
+				4437B80C1956DF0B005CCBBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 442BF3E917896E1D003FAB93 /* Project object */;
+}
