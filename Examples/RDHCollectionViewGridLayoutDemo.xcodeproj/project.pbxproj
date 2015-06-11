@@ -24,9 +24,11 @@
 		444926661AB6C17A002DBB57 /* RDHStoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444926651AB6C17A002DBB57 /* RDHStoryboardTests.swift */; };
 		4449266A1AB6C24D002DBB57 /* TestDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444926691AB6C24D002DBB57 /* TestDataSource.swift */; };
 		4449266C1AB6C94C002DBB57 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4449266B1AB6C94C002DBB57 /* TestStoryboard.storyboard */; };
+		AB13C7C11B293FF6006CB9A1 /* BSGridFreeSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = AB13C7C01B293FF6006CB9A1 /* BSGridFreeSpace.m */; };
+		AB13C7C41B296F8F006CB9A1 /* BSPositionTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = AB13C7C31B296F8F006CB9A1 /* BSPositionTranslator.m */; };
 		AB76FF241B2869F000D3FF18 /* BSGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF231B2869F000D3FF18 /* BSGrid.m */; };
 		AB76FF271B286A0A00D3FF18 /* BSGridPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */; };
-		AB76FF2A1B286D0700D3FF18 /* BSGridBlockSize.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */; };
+		AB76FF2A1B286D0700D3FF18 /* BSGridPlate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF291B286D0700D3FF18 /* BSGridPlate.m */; };
 		AB76FF2D1B286D6600D3FF18 /* BSGridMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */; };
 		AB76FF301B287B7D00D3FF18 /* BSGridRect.m in Sources */ = {isa = PBXBuildFile; fileRef = AB76FF2F1B287B7D00D3FF18 /* BSGridRect.m */; };
 /* End PBXBuildFile section */
@@ -74,12 +76,16 @@
 		444926651AB6C17A002DBB57 /* RDHStoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDHStoryboardTests.swift; sourceTree = "<group>"; };
 		444926691AB6C24D002DBB57 /* TestDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataSource.swift; sourceTree = "<group>"; };
 		4449266B1AB6C94C002DBB57 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
+		AB13C7BF1B293FF6006CB9A1 /* BSGridFreeSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridFreeSpace.h; sourceTree = "<group>"; };
+		AB13C7C01B293FF6006CB9A1 /* BSGridFreeSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridFreeSpace.m; sourceTree = "<group>"; };
+		AB13C7C21B296F8F006CB9A1 /* BSPositionTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPositionTranslator.h; sourceTree = "<group>"; };
+		AB13C7C31B296F8F006CB9A1 /* BSPositionTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPositionTranslator.m; sourceTree = "<group>"; };
 		AB76FF221B2869F000D3FF18 /* BSGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGrid.h; sourceTree = "<group>"; };
 		AB76FF231B2869F000D3FF18 /* BSGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGrid.m; sourceTree = "<group>"; };
 		AB76FF251B286A0900D3FF18 /* BSGridPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridPosition.h; sourceTree = "<group>"; };
 		AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridPosition.m; sourceTree = "<group>"; };
-		AB76FF281B286D0700D3FF18 /* BSGridBlockSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridBlockSize.h; sourceTree = "<group>"; };
-		AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridBlockSize.m; sourceTree = "<group>"; };
+		AB76FF281B286D0700D3FF18 /* BSGridPlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridPlate.h; sourceTree = "<group>"; };
+		AB76FF291B286D0700D3FF18 /* BSGridPlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridPlate.m; sourceTree = "<group>"; };
 		AB76FF2B1B286D6600D3FF18 /* BSGridMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridMatrix.h; sourceTree = "<group>"; };
 		AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGridMatrix.m; sourceTree = "<group>"; };
 		AB76FF2E1B287B7D00D3FF18 /* BSGridRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGridRect.h; sourceTree = "<group>"; };
@@ -181,12 +187,16 @@
 				AB76FF231B2869F000D3FF18 /* BSGrid.m */,
 				AB76FF251B286A0900D3FF18 /* BSGridPosition.h */,
 				AB76FF261B286A0A00D3FF18 /* BSGridPosition.m */,
-				AB76FF281B286D0700D3FF18 /* BSGridBlockSize.h */,
-				AB76FF291B286D0700D3FF18 /* BSGridBlockSize.m */,
+				AB76FF281B286D0700D3FF18 /* BSGridPlate.h */,
+				AB76FF291B286D0700D3FF18 /* BSGridPlate.m */,
 				AB76FF2B1B286D6600D3FF18 /* BSGridMatrix.h */,
 				AB76FF2C1B286D6600D3FF18 /* BSGridMatrix.m */,
 				AB76FF2E1B287B7D00D3FF18 /* BSGridRect.h */,
 				AB76FF2F1B287B7D00D3FF18 /* BSGridRect.m */,
+				AB13C7BF1B293FF6006CB9A1 /* BSGridFreeSpace.h */,
+				AB13C7C01B293FF6006CB9A1 /* BSGridFreeSpace.m */,
+				AB13C7C21B296F8F006CB9A1 /* BSPositionTranslator.h */,
+				AB13C7C31B296F8F006CB9A1 /* BSPositionTranslator.m */,
 			);
 			name = RDHCollectionViewGridLayout;
 			path = ../RDHCollectionViewGridLayout;
@@ -319,7 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB76FF2A1B286D0700D3FF18 /* BSGridBlockSize.m in Sources */,
+				AB13C7C41B296F8F006CB9A1 /* BSPositionTranslator.m in Sources */,
+				AB76FF2A1B286D0700D3FF18 /* BSGridPlate.m in Sources */,
 				AB76FF271B286A0A00D3FF18 /* BSGridPosition.m in Sources */,
 				AB76FF2D1B286D6600D3FF18 /* BSGridMatrix.m in Sources */,
 				442BF40117896E1D003FAB93 /* main.m in Sources */,
@@ -327,6 +338,7 @@
 				442BF40517896E1D003FAB93 /* RDHAppDelegate.m in Sources */,
 				AB76FF301B287B7D00D3FF18 /* BSGridRect.m in Sources */,
 				442BF41617896E84003FAB93 /* RDHDemoViewController.m in Sources */,
+				AB13C7C11B293FF6006CB9A1 /* BSGridFreeSpace.m in Sources */,
 				AB76FF241B2869F000D3FF18 /* BSGrid.m in Sources */,
 				442BF41317896E5D003FAB93 /* RDHDemoCell.m in Sources */,
 			);

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BSGridBlockSize : NSObject
+@interface BSGridPlate : NSObject
 
-@property (nonatomic, assign) NSInteger rows;
-@property (nonatomic, assign) NSInteger cols;
+@property (nonatomic, assign) NSInteger rowSpan;
+@property (nonatomic, assign) NSInteger colSpan;
 
 @end

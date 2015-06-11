@@ -9,7 +9,7 @@
 #import "RDHDemoViewController.h"
 #import "RDHCollectionViewGridLayout.h"
 #import "RDHDemoCell.h"
-#import "BSGridBlockSize.h"
+#import "BSGridPlate.h"
 
 #define RDH_RANDOM_DATA 1
 
@@ -21,7 +21,7 @@
 
 @property (nonatomic, copy, readonly) NSDictionary *testData;
 
-@property (nonatomic, strong) BSGridBlockSize *gridBlockSize;
+@property (nonatomic, strong) BSGridPlate *gridBlockSize;
 
 @end
 
@@ -35,7 +35,7 @@
     NSUInteger lineItemCount = RDH_RANDOM_DATA ? ((arc4random() % 5) + 1) : 4;
     CGFloat lineSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 5;
     CGFloat itemSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 10;
-    [layout setLines:1000 LineItemCount:lineItemCount ItemSpacing:lineSpacing LineSpacing:itemSpacing];
+    [layout setGridMetadata:1000 LineItemCount:lineItemCount ItemSpacing:lineSpacing LineSpacing:itemSpacing];
     if (RDH_RANDOM_DATA) {
         switch (arc4random() % 3) {
             case 0: // Line size
@@ -211,7 +211,7 @@
     self.currentCollectionViewLayout.sectionsStartOnNewLine = !self.currentCollectionViewLayout.sectionsStartOnNewLine;
 }
 
-- (BSGridBlockSize *)getGridBlockSizeForItemAtIndexPath:(NSIndexPath *)indexPath layout:(UICollectionViewLayout *)collectionViewLayout {
+- (BSGridPlate *)getGridBlockSizeForItemAtIndexPath:(NSIndexPath *)indexPath layout:(UICollectionViewLayout *)collectionViewLayout {
     return self.gridBlockSize;
 }
 

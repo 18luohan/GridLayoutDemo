@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class BSGridBlockSize, BSGridRect;
+@class BSGridPlate, BSGridRect, BSPositionTranslator;
 
 @interface BSGridMatrix : NSObject
 
-- (instancetype)initWithRows:(NSInteger) rows columns:(NSInteger) cols;
-- (BSGridRect *) gridRectByGridBlockSize:(BSGridBlockSize *)gridBlockSize;
+- (instancetype)initWithRows:(NSInteger) rows Columns:(NSInteger) cols PositonTranslator:(BSPositionTranslator *)positionTranslator;
+- (BSGridRect *) gridRectForGridPlate:(BSGridPlate *)gridBlockSize;
 
 @end

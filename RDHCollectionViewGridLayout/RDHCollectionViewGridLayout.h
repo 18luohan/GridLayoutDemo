@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@class BSGridBlockSize;
+@class BSGridPlate;
 
 @protocol RDHCollectionViewGridLayoutDelegate <UICollectionViewDelegate>
 @optional
-- (BSGridBlockSize *)getGridBlockSizeForItemAtIndexPath:(NSIndexPath *)indexPath layout:(UICollectionViewLayout *)collectionViewLayout;
+- (BSGridPlate *)getGridBlockSizeForItemAtIndexPath:(NSIndexPath *)indexPath layout:(UICollectionViewLayout *)collectionViewLayout;
 //- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetsForItemAtIndexPath:(NSIndexPath *)indexPath; // defaults to uiedgeinsetszero
 @end
 
@@ -104,7 +104,7 @@
 
 @property (nonatomic, weak) IBOutlet NSObject<RDHCollectionViewGridLayoutDelegate> *delegate;
 
-- (void) setLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing LineSpacing:(CGFloat)lineSpacing;
+- (void) setGridMetadataWithLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing LineSpacing:(CGFloat)lineSpacing;
 
 @end
 

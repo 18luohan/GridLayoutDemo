@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Rich H. All rights reserved.
 //
 
-#import "BSGridBlockSize.h"
+#import "BSGridPlate.h"
 
-@implementation BSGridBlockSize
+@implementation BSGridPlate
 
 @end

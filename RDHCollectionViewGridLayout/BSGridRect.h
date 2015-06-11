@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class BSGridPosition;
+@class BSGridPosition,BSGridPlate;
 
 @interface BSGridRect : NSObject
 
-@property (nonatomic, strong) BSGridPosition *gridPosition;
+@property (nonatomic, strong) BSGridPosition *position;
+@property (nonatomic,strong) BSGridPlate *plate;
 @property (nonatomic, assign) CGRect frameOfBlock;
+
+- (instancetype) initWithPosition:(BSGridPosition *)position frameOfBlock:(CGRect)frame;
 
 @end

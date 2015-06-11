@@ -11,11 +11,11 @@
 
 @implementation BSGridRect
 
-- (instancetype) initWithGridPosition:(BSGridPosition *)gridPosition frameOfBlock:(CGRect)frame {
+- (instancetype) initWithPosition:(BSGridPosition *)position frameOfBlock:(CGRect)frame {
     
     self = [super init];
     if (self) {
-        self.gridPosition = gridPosition;
+        self.position = position;
         self.frameOfBlock = frame;
     }
     return self;

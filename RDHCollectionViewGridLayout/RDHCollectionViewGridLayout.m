@@ -9,6 +9,7 @@
 #import "RDHCollectionViewGridLayout.h"
 #import "BSGridMatrix.h"
 #import "BSGridRect.h"
+#import "BSPositionTranslator.h"
 
 typedef NS_ENUM(NSUInteger, RDHLineDimensionType) {
     RDHLineDimensionTypeSize,
@@ -78,14 +79,11 @@ static CGFloat const RDHLineExtensionDefault = 0;
     _lineSize = RDHLineSizeDefault;
     _lineMultiplier = RDHLineMutliplierDefault;
     _lineExtension = RDHLineExtensionDefault;
-//    _lineItemCount = 4;
-//    _itemSpacing = 0;
-//    _lineSpacing = 0;
-    [self setLines:1000 LineItemCount:4 ItemSpacing:0 LineSpacing:0];
+    [self setGridMetadataWithLines:1000 LineItemCount:4 ItemSpacing:0 LineSpacing:0];
     _sectionsStartOnNewLine = NO;
 }
 
-- (void) setLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing LineSpacing:(CGFloat)lineSpacing {
+- (void) setGridMetadataWithLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing LineSpacing:(CGFloat)lineSpacing {
     _lineItemCount = lineItemCount;
     _itemSpacing = itemSpacing;
     _lineSpacing = lineSpacing;
@@ -93,7 +91,10 @@ static CGFloat const RDHLineExtensionDefault = 0;
 }
 
 - (void) initGridMatrix:(NSInteger)rows :(NSInteger)cols  {
-    self.gridMatrix = [[BSGridMatrix alloc] initWithRows:rows columns:cols];
+    UIView *backgroud = self.collectionView.backgroundView;
+    BSPositionTranslator *positionTranslator = [[BSPositionTranslator alloc]
+                                                initWithBackground:backgroud padding:0 GridCountInUnscrollDirection:self.lineItemCount];
+    self.gridMatrix = [[BSGridMatrix alloc] initWithRows:rows Columns:cols PositonTranslator:positionTranslator];
 }
 
 -(void)invalidateLayout
@@ -254,6 +255,7 @@ static CGFloat const RDHLineExtensionDefault = 0;
 -(NSUInteger)calculateNumberOfLines
 {
     NSInteger numberOfLines;
+    // sectionsStartOnNewLine 表示是否要为每个新行创建一个section
     if (self.sectionsStartOnNewLine) {
         
         numberOfLines = 0;
@@ -272,6 +274,11 @@ static CGFloat const RDHLineExtensionDefault = 0;
         NSUInteger n = 0;
         NSInteger const sectionCount = [self.collectionView numberOfSections];
         for (NSInteger section=0; section<sectionCount; section++) {
+            /*
+             疑问：numberOfItemsInSection返回值表示的是一个section中grid的总数，还是可见的视图块（即ViewCell）的数量？
+             如果是可见的视图块的数量，那么这样计算行数就有问题。如果指的是一个grid，那么这个方法命名很有误导性，
+             因为DataSource中的基本单元就是data item，这里的item指的就是ViewCell。
+             */
             n += [self.collectionView numberOfItemsInSection:section];
         }
         CGFloat numberOfItems = n;
@@ -282,12 +289,14 @@ static CGFloat const RDHLineExtensionDefault = 0;
     return numberOfLines;
 }
 
+// 计算grid的绝对大小。这里的item就是网格布局中的每个单元格，即grid。
 -(CGSize)calculateItemSize
 {
     CGFloat collectionConstrainedDimension = [self constrainedCollectionViewDimension];
     // Subtract the spacing between items on a line
     collectionConstrainedDimension -= (self.itemSpacing * (self.lineItemCount - 1));
     
+    // constrainedItemDimension 就是在不可滚动的维度上 item 的长度
     const CGFloat constrainedItemDimension = floor(collectionConstrainedDimension / self.lineItemCount);
     
     CGSize size = CGSizeZero;
@@ -357,12 +366,12 @@ static CGFloat const RDHLineExtensionDefault = 0;
     UICollectionViewLayoutAttributes *attrs = [[[self class] layoutAttributesClass] layoutAttributesForCellWithIndexPath:indexPath];
     
     // 如果是垂直方向滚动，使用如下定位逻辑
-    BSGridBlockSize *gridBlockSize = [self.delegate getGridBlockSizeForItemAtIndexPath:indexPath layout:self];
-    BSGridRect *gridRect = [self.gridMatrix gridRectByGridBlockSize:gridBlockSize];
+    BSGridPlate *gridPlate = [self.delegate getGridBlockSizeForItemAtIndexPath:indexPath layout:self];
+    BSGridRect *gridRect = [self.gridMatrix gridRectForGridPlate:gridPlate];
     self.indexPathToGridRectMapping[indexPath] = gridRect;
     
-    // 如果是水平方向滚动，使用如下逻辑
-    // TODO 水平方向滚动的定位逻辑
+    #warning 如果是水平方向滚动，使用如下逻辑
+    #warning TODO 水平方向滚动的定位逻辑
     
     attrs.frame = gridRect.frameOfBlock;
     
@@ -374,8 +383,11 @@ static CGFloat const RDHLineExtensionDefault = 0;
 
 #pragma mark - Convenince sizing methods
 
+// 计算collection view中 在不可滚动的维度上 实际可用于布局视图组件的长度
 -(CGFloat)constrainedCollectionViewDimension
 {
+    // collectionView.contentInset 就是内嵌在 collection view 边缘里面的 padding
+    // collectionViewInsetBoundsSize 就是 collection view 内实际可用来展现内容的区域
     CGSize collectionViewInsetBoundsSize = UIEdgeInsetsInsetRect(self.collectionView.bounds, self.collectionView.contentInset).size;
     
     switch (self.scrollDirection) {
