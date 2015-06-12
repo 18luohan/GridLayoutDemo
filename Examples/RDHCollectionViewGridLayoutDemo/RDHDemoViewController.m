@@ -19,7 +19,7 @@
 
 @property (nonatomic, readonly) RDHCollectionViewGridLayout *currentCollectionViewLayout;
 
-@property (nonatomic, copy, readonly) NSDictionary *testData;
+//@property (nonatomic, copy, readonly) NSDictionary *testData;
 
 @property (nonatomic, strong) BSGridPlate *gridBlockSize;
 
@@ -29,41 +29,12 @@
 
 @dynamic collectionViewLayout;
 
-+(RDHCollectionViewGridLayout *)newGridLayout
++ (RDHCollectionViewGridLayout *)newGridLayout
 {
-    RDHCollectionViewGridLayout *layout = [RDHCollectionViewGridLayout new];
-    NSUInteger lineItemCount = RDH_RANDOM_DATA ? ((arc4random() % 5) + 1) : 4;
-    CGFloat lineSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 5;
-    CGFloat itemSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 10;
-    [layout setGridMetadata:1000 LineItemCount:lineItemCount ItemSpacing:lineSpacing LineSpacing:itemSpacing];
-    if (RDH_RANDOM_DATA) {
-        switch (arc4random() % 3) {
-            case 0: // Line size
-                layout.lineSize = 160;
-                break;
-            case 1: // Line multiplier
-                layout.lineMultiplier = 2;
-                break;
-            case 2: // Line extension
-                layout.lineExtension = 100;
-                break;
-        }
-    } else {
-        layout.lineSize = 0;
-    }
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionsStartOnNewLine = YES;
-    
-#if FIXED_LAYOUT
-    
-    layout.itemSpacing = 0;
-    layout.lineSpacing = 0;
-    layout.lineSize = 0;
-    layout.lineItemCount = 3;
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionsStartOnNewLine = NO;
-    
-#endif
+    RDHCollectionViewGridLayout *layout = [[RDHCollectionViewGridLayout alloc] init];
+//    NSUInteger lineItemCount = RDH_RANDOM_DATA ? ((arc4random() % 5) + 1) : 4;
+//    CGFloat lineSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 5;
+//    CGFloat itemSpacing = RDH_RANDOM_DATA ? (arc4random() % 16) : 10;
     
     return layout;
 }
@@ -74,12 +45,12 @@
     if (self) {
         // Custom initialization
                 
-        NSUInteger sectionCount = RDH_RANDOM_DATA ? (arc4random() % 20) + 10 : 10;
-        NSMutableDictionary *testData = [NSMutableDictionary dictionaryWithCapacity:sectionCount];
-        for (NSUInteger i=0; i<sectionCount; i++) {
-            testData[@(i)] = @(RDH_RANDOM_DATA ? (arc4random() % 16) : 10);
-        }
-        _testData = [testData copy];
+//        NSUInteger sectionCount = RDH_RANDOM_DATA ? (arc4random() % 20) + 10 : 10;
+//        NSMutableDictionary *testData = [NSMutableDictionary dictionaryWithCapacity:sectionCount];
+//        for (NSUInteger i=0; i<sectionCount; i++) {
+//            testData[@(i)] = @(RDH_RANDOM_DATA ? (arc4random() % 16) : 10);
+//        }
+//        _testData = [testData copy];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(didTapResetItem)];
         
@@ -96,7 +67,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.collectionView.backgroundColor = [UIColor lightGrayColor];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerClass:[RDHDemoCell class] forCellWithReuseIdentifier:[RDHDemoCell reuseIdentifier]];
 }
 
@@ -104,7 +75,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self showInfo];
 }
 
 -(void)reset
@@ -122,46 +92,24 @@
     [self.collectionView setCollectionViewLayout:layout animated:animated];
 }
 
--(void)showInfo
-{
-    NSLog(@"Current layout: %@", self.currentCollectionViewLayout);
-#if RDH_RANDOM_DATA
-    NSMutableString *message = [NSMutableString stringWithFormat:@"Collection view: sections=%ld\n", (long) [self.collectionView numberOfSections]];
-    [message appendString:@"Layout:\n"];
-    [message appendFormat:@"lineItemCount=%lu,\n", (unsigned long) self.currentCollectionViewLayout.lineItemCount];
-    [message appendFormat:@"lineSpacing=%.2lf,\n", self.currentCollectionViewLayout.lineSpacing];
-    [message appendFormat:@"itemSpacing=%.2lf,\n", self.currentCollectionViewLayout.itemSpacing];
-    
-    if (self.currentCollectionViewLayout.lineSize != 0) {
-        [message appendFormat:@"lineSize=%.2lf\n", self.currentCollectionViewLayout.lineSize];
-    } else if (self.currentCollectionViewLayout.lineMultiplier != 1) {
-        [message appendFormat:@"lineMultiplier=%.2lf\n", self.currentCollectionViewLayout.lineMultiplier];
-    } else if (self.currentCollectionViewLayout.lineExtension != 0) {
-        [message appendFormat:@"lineExtension=%.2lf\n", self.currentCollectionViewLayout.lineExtension];
-    } else {
-        [message appendString:@"lineDimension=auto\n"];
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:@"Info" message:message delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
-#endif
-}
-
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-#if FIXED_LAYOUT
-    return 3;
-#else
-    return [self.testData count];
-#endif
+//#if FIXED_LAYOUT
+//    return 3;
+//#else
+//    return [self.testData count];
+//#endif
+    return 1;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-#if FIXED_LAYOUT
-    return 3;
-#else
-    return [self.testData[@(section)] unsignedIntegerValue];
-#endif
+//#if FIXED_LAYOUT
+//    return 3;
+//#else
+//    return [self.testData[@(section)] unsignedIntegerValue];
+//#endif
+    return 1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -186,8 +134,6 @@
     [self.collectionView reloadData];
 #else
     [self reset];
-    
-    [self showInfo];
 #endif
 }
 

@@ -11,21 +11,8 @@
 #import "BSGridRect.h"
 #import "BSPositionTranslator.h"
 
-typedef NS_ENUM(NSUInteger, RDHLineDimensionType) {
-    RDHLineDimensionTypeSize,
-    RDHLineDimensionTypeMultiplier,
-    RDHLineDimensionTypeExtension
-};
-
-static RDHLineDimensionType const RDHLineDimensionTypeDefault = RDHLineDimensionTypeSize;
-
-static CGFloat const RDHLineSizeDefault = 0;
-static CGFloat const RDHLineMutliplierDefault = 1;
-static CGFloat const RDHLineExtensionDefault = 0;
-
 @interface RDHCollectionViewGridLayout ()
 
-@property (nonatomic, copy) NSArray *firstLineFrames;
 @property (nonatomic, copy, readonly) NSMutableDictionary *itemAttributes;
 
 /// This property is used to store the lineDimension when it is set to 0 (depends on the average item size) and the base item size.
@@ -33,8 +20,6 @@ static CGFloat const RDHLineExtensionDefault = 0;
 
 /// This property is re-calculated when invalidating the layout
 @property (nonatomic, assign) NSUInteger numberOfLines;
-
-@property (nonatomic, assign) RDHLineDimensionType lineDimensionType;
 
 @property (nonatomic, strong) BSGridMatrix *gridMatrix;
 
@@ -66,7 +51,6 @@ static CGFloat const RDHLineExtensionDefault = 0;
 {
     [self setInitialDefaults];
     
-    _firstLineFrames = nil;
     _itemAttributes = [NSMutableDictionary dictionary];
     _numberOfLines = 0;
 }
@@ -75,33 +59,16 @@ static CGFloat const RDHLineExtensionDefault = 0;
 {
     // Default properties
     _scrollDirection = UICollectionViewScrollDirectionVertical;
-    _lineDimensionType = RDHLineDimensionTypeDefault;
-    _lineSize = RDHLineSizeDefault;
-    _lineMultiplier = RDHLineMutliplierDefault;
-    _lineExtension = RDHLineExtensionDefault;
-    [self setGridMetadataWithLines:1000 LineItemCount:4 ItemSpacing:0 LineSpacing:0];
-    _sectionsStartOnNewLine = NO;
-}
-
-- (void) setGridMetadataWithLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing LineSpacing:(CGFloat)lineSpacing {
-    _lineItemCount = lineItemCount;
-    _itemSpacing = itemSpacing;
-    _lineSpacing = lineSpacing;
-    [self initGridMatrix:lines :lineItemCount];
-}
-
-- (void) initGridMatrix:(NSInteger)rows :(NSInteger)cols  {
-    UIView *backgroud = self.collectionView.backgroundView;
-    BSPositionTranslator *positionTranslator = [[BSPositionTranslator alloc]
-                                                initWithBackground:backgroud padding:0 GridCountInUnscrollDirection:self.lineItemCount];
-    self.gridMatrix = [[BSGridMatrix alloc] initWithRows:rows Columns:cols PositonTranslator:positionTranslator];
+    _lineSpacing = 0;
+    _itemSpacing = 10;
+    _lineItemCount = 6;
+    _lineSpacing = _itemSpacing;
 }
 
 -(void)invalidateLayout
 {
     [super invalidateLayout];
     
-    self.firstLineFrames = nil;
     [self.itemAttributes removeAllObjects];
     self.numberOfLines = 0;
     self.calculatedItemSize = CGSizeZero;
@@ -115,6 +82,8 @@ static CGFloat const RDHLineExtensionDefault = 0;
     
     self.calculatedItemSize = [self calculateItemSize];
     
+    [self setGridMetadataWithLines:_numberOfLines LineItemCount:_lineItemCount ItemSpacing:_itemSpacing];
+    
     NSInteger const sectionCount = [self.collectionView numberOfSections];
     for (NSInteger section=0; section<sectionCount; section++) {
         
@@ -127,6 +96,20 @@ static CGFloat const RDHLineExtensionDefault = 0;
             self.itemAttributes[indexPath] = [self calculateLayoutAttributesForItemAtIndexPath:indexPath];
         }
     }
+}
+
+- (void) setGridMetadataWithLines:(NSUInteger)lines LineItemCount:(NSUInteger)lineItemCount ItemSpacing:(CGFloat)itemSpacing {
+    _lineItemCount = lineItemCount;
+    _itemSpacing = itemSpacing;
+    _lineSpacing = itemSpacing;
+    [self initGridMatrix:lines :lineItemCount];
+}
+
+- (void) initGridMatrix:(NSInteger)rows :(NSInteger)cols  {
+    UIView *backgroud = self.collectionView.backgroundView;
+    BSPositionTranslator *positionTranslator = [[BSPositionTranslator alloc]
+                                                initWithBackground:backgroud padding:_itemSpacing GridCountInUnscrollDirection:self.lineItemCount];
+    self.gridMatrix = [[BSGridMatrix alloc] initWithRows:rows Columns:cols PositonTranslator:positionTranslator];
 }
 
 -(CGSize)collectionViewContentSize
@@ -186,69 +169,6 @@ static CGFloat const RDHLineExtensionDefault = 0;
 #pragma mark - Lazily loaded properties
 
 /// Precalculate the frames for the first line as they can be reused for every line
--(NSArray *)firstLineFrames
-{
-    if (!_firstLineFrames) {
-        
-        CGFloat collectionConstrainedDimension = [self constrainedCollectionViewDimension];
-        // Subtract the spacing between items on a line
-        collectionConstrainedDimension -= (self.itemSpacing * (self.lineItemCount - 1));
-
-        CGFloat constrainedItemDimension;
-        switch (self.scrollDirection) {
-            case UICollectionViewScrollDirectionVertical:
-                constrainedItemDimension = self.calculatedItemSize.width;
-                break;
-                
-            case UICollectionViewScrollDirectionHorizontal:
-                constrainedItemDimension = self.calculatedItemSize.height;
-                break;
-        }
-        
-        // This value will always be less than the lineItemCount - this is the number of dirty pixels
-        CGFloat remainingDimension = collectionConstrainedDimension - (constrainedItemDimension * self.lineItemCount);
-        
-        CGRect frame = CGRectZero;
-        frame.size = self.calculatedItemSize;
-        
-        NSMutableArray *frames = [NSMutableArray arrayWithCapacity:self.lineItemCount];
-        
-        for (NSUInteger i=0; i<self.lineItemCount; i++) {
-            
-            CGRect itemFrame = frame;
-            
-            // Add an extra pixel if we've got dirty pixels left
-            if (remainingDimension-- > 0) {
-                switch (self.scrollDirection) {
-                    case UICollectionViewScrollDirectionVertical:
-                        itemFrame.size.width++;
-                        break;
-                        
-                    case UICollectionViewScrollDirectionHorizontal:
-                        itemFrame.size.height++;
-                        break;
-                }
-            }
-            
-            [frames addObject:[NSValue valueWithCGRect:itemFrame]];
-            
-            // Move to the next item
-            switch (self.scrollDirection) {
-                case UICollectionViewScrollDirectionVertical:
-                    frame.origin.x = itemFrame.origin.x + itemFrame.size.width + self.itemSpacing;
-                    break;
-                    
-                case UICollectionViewScrollDirectionHorizontal:
-                    frame.origin.y = itemFrame.origin.y + itemFrame.size.height + self.itemSpacing;
-                    break;
-            }
-        }
-        
-        _firstLineFrames = [frames copy];
-    }
-    
-    return _firstLineFrames;
-}
 
 #pragma mark - Calculation methods
 
@@ -299,66 +219,8 @@ static CGFloat const RDHLineExtensionDefault = 0;
     // constrainedItemDimension 就是在不可滚动的维度上 item 的长度
     const CGFloat constrainedItemDimension = floor(collectionConstrainedDimension / self.lineItemCount);
     
-    CGSize size = CGSizeZero;
-    switch (self.scrollDirection) {
-        case UICollectionViewScrollDirectionVertical:
-            size.width = constrainedItemDimension;
-            
-            if ((self.lineSize == RDHLineSizeDefault)
-                && (self.lineMultiplier == RDHLineMutliplierDefault)
-                && (self.lineExtension == RDHLineExtensionDefault)) {
-                
-                // All defaults which means that layout uses the same height/width
-                size.height = round(collectionConstrainedDimension / self.lineItemCount);
-                
-            } else {
-                
-                switch (self.lineDimensionType) {
-                    case RDHLineDimensionTypeSize:
-                        size.height = self.lineSize;
-                        break;
-                        
-                    case RDHLineDimensionTypeMultiplier:
-                        size.height = round(size.width * self.lineMultiplier);
-                        break;
-                        
-                    case RDHLineDimensionTypeExtension:
-                        size.height = size.width + self.lineExtension;
-                        break;
-                }
-            }
-            break;
-            
-        case UICollectionViewScrollDirectionHorizontal:
-            size.height = constrainedItemDimension;
-            
-            if ((self.lineSize == RDHLineSizeDefault)
-                && (self.lineMultiplier == RDHLineMutliplierDefault)
-                && (self.lineExtension == RDHLineExtensionDefault)) {
-                
-                // All defaults which means that layout uses the same height/width
-                size.width = round(collectionConstrainedDimension / self.lineItemCount);
-                
-            } else {
-            
-                switch (self.lineDimensionType) {
-                    case RDHLineDimensionTypeSize:
-                        size.width = self.lineSize;
-                        break;
-                        
-                    case RDHLineDimensionTypeMultiplier:
-                        size.width = round(size.height * self.lineMultiplier);
-                        break;
-                        
-                    case RDHLineDimensionTypeExtension:
-                        size.width = size.height + self.lineExtension;
-                        break;
-                }
-            }
-            break;
-    }
-    
-    return size;
+    // Uses the same height/width
+    return CGSizeMake(constrainedItemDimension, constrainedItemDimension);
 }
 
 -(UICollectionViewLayoutAttributes *)calculateLayoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -412,63 +274,6 @@ static CGFloat const RDHLineExtensionDefault = 0;
     }
 }
 
--(void)setLineDimensionType:(RDHLineDimensionType)lineDimensionType
-{
-    if (_lineDimensionType != lineDimensionType) {
-        _lineDimensionType = lineDimensionType;
-        
-        [self invalidateLayout];
-    }
-}
-
--(void)setLineSize:(CGFloat)lineSize
-{
-    NSAssert(lineSize >= 0, @"Negative lineSize is meaningless");
-    
-    // Reset other line dimensions
-    _lineMultiplier = RDHLineMutliplierDefault;
-    _lineExtension = RDHLineExtensionDefault;
-    self.lineDimensionType = RDHLineDimensionTypeSize;
-    
-    if (_lineSize != lineSize) {
-        _lineSize = lineSize;
-        
-        [self invalidateLayout];
-    }
-}
-
--(void)setLineMultiplier:(CGFloat)lineMultiplier
-{
-    NSAssert(lineMultiplier > 0, @"None positive lineMultiplier is meaningless");
-    
-    // Reset other line dimensions
-    _lineSize = RDHLineSizeDefault;
-    _lineExtension = RDHLineExtensionDefault;
-    self.lineDimensionType = RDHLineDimensionTypeMultiplier;
-    
-    if (_lineMultiplier != lineMultiplier) {
-        _lineMultiplier = lineMultiplier;
-        
-        [self invalidateLayout];
-    }
-}
-
--(void)setLineExtension:(CGFloat)lineExtension
-{
-    NSAssert(lineExtension >= 0, @"Negative lineExtension is meaningless");
-    
-    // Reset other line dimensions
-    _lineSize = RDHLineSizeDefault;
-    _lineMultiplier = RDHLineMutliplierDefault;
-    self.lineDimensionType = RDHLineDimensionTypeExtension;
-    
-    if (_lineExtension != lineExtension) {
-        _lineExtension = lineExtension;
-        
-        [self invalidateLayout];
-    }
-}
-
 -(void)setLineItemCount:(NSUInteger)lineItemCount
 {
     NSAssert(lineItemCount > 0, @"Zero line item count is meaningless");
@@ -508,30 +313,8 @@ static CGFloat const RDHLineExtensionDefault = 0;
 
 -(NSString *)description
 {
-    NSString *lineDimension;
-    
-    if ((self.lineSize == RDHLineSizeDefault)
-        && (self.lineMultiplier == RDHLineMutliplierDefault)
-        && (self.lineExtension == RDHLineExtensionDefault)) {
-        
-        lineDimension = @"(Auto)";
-        
-    } else {
-        
-        switch (self.lineDimensionType) {
-            case RDHLineDimensionTypeSize:
-                lineDimension = [NSString stringWithFormat:@"(Size, %.3lf)", self.lineSize];
-                break;
-            case RDHLineDimensionTypeMultiplier:
-                lineDimension = [NSString stringWithFormat:@"(Multiplier, %.3lf)", self.lineMultiplier];
-                break;
-            case RDHLineDimensionTypeExtension:
-                lineDimension = [NSString stringWithFormat:@"(Extension, %.3lf)", self.lineExtension];
-                break;
-        }
-    }
-    
-    return [NSString stringWithFormat:@"<%@: %p; scrollDirection = %@; lineDimension = %@; lineItemCount = %llu; itemSpacing = %.3lf; lineSpacing = %.3lf; sectionsStartOnNewLine = %@>", NSStringFromClass([self class]), self, (self.scrollDirection == UICollectionViewScrollDirectionVertical ? @"Vertical" : @"Horizontal"), lineDimension, (unsigned long long) self.lineItemCount, self.itemSpacing, self.lineSpacing, (self.sectionsStartOnNewLine ? @"YES" : @"NO")];
+    return [NSString stringWithFormat:@"<%@: %p; scrollDirection = %@; lineItemCount = %llu; itemSpacing = %.3lf; lineSpacing = %.3lf; sectionsStartOnNewLine = %@>",
+            NSStringFromClass([self class]), self, (self.scrollDirection == UICollectionViewScrollDirectionVertical ? @"Vertical" : @"Horizontal"), (unsigned long long) self.lineItemCount, self.itemSpacing, self.lineSpacing, (self.sectionsStartOnNewLine ? @"YES" : @"NO")];
 }
 
 @end
